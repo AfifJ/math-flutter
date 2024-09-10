@@ -5,7 +5,7 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = tugas_flutter_1
+PRODUCT_NAME = task1
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = com.example.tugasFlutter1

@@ -54,6 +54,7 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 40),
+
                         OutlinedButton(
                           style: OutlinedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(
@@ -78,15 +79,17 @@ class DashboardPage extends StatelessWidget {
                           child: const Text("Ganjil Genap"),
                         ),
                         SizedBox(height: 40),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red[400],
-                                foregroundColor: Colors.white,
-                                minimumSize: Size(double.infinity, 0),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 24, vertical: 18)),
-                            onPressed: () {},
-                            child: Text("Logout"))
+                        ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red.shade900,
+                              foregroundColor: Colors.white,
+                              minimumSize: Size(double.infinity, 0),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 18)),
+                          onPressed: () {},
+                          icon: Icon(Icons.logout),
+                          label: Text("Logout"),
+                        ) // child: Text("Logout"))
                       ]),
                 ))));
   }
