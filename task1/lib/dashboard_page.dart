@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:login_and_math/ganjilgenap_page.dart';
+import 'package:login_and_math/tambahkurang.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -63,7 +65,9 @@ class DashboardPage extends StatelessWidget {
                               ),
                               foregroundColor: Colors.black,
                               minimumSize: Size(double.infinity, 0)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => TambahKurang()),);
+                          },
                           child: const Text("Tambah Kurang"),
                         ),
                         SizedBox(height: 12),
@@ -75,7 +79,9 @@ class DashboardPage extends StatelessWidget {
                               ),
                               foregroundColor: Colors.black,
                               minimumSize: Size(double.infinity, 0)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => GanjilGenap()),);
+                          },
                           child: const Text("Ganjil Genap"),
                         ),
                         SizedBox(height: 40),
