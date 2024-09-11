@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:login_and_math/claude.dart';
+import 'package:login_and_math/dashboard_page.dart';
+import 'package:login_and_math/ganjilgenap_page.dart';
+import 'package:login_and_math/tambahkurang.dart';
 import 'login_page.dart';
-import 'dashboard_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: DashboardPage(),
     );
   }
 }

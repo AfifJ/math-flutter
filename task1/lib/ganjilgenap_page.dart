@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:login_and_math/components/custom_button.dart';
+import 'package:login_and_math/components/custom_textfield.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -37,37 +40,28 @@ class _GanjilGenapState extends State<GanjilGenap> {
       appBar: AppBar(
         title: const Text('Ganjil Genap'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-                enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    borderSide: BorderSide(color: Colors.black26)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    borderSide: BorderSide(color: Colors.black)),
-                labelText: 'Masukkan angka',
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 500),
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Image.network(
+                  "assets/odd_even.png"),
+              CustomTextField(
+                label: "Masukkan angka",
+                controller: _controller,
               ),
-              keyboardType: TextInputType.number,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _ganjilGenap,
-              child: const Text('Cek'),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              _hasil,
-              style: const TextStyle(fontSize: 24),
-              textAlign: TextAlign.center,
-            ),
-          ],
+              const SizedBox(height: 20),
+              CustomButton(text: "Cek", onPressed: _ganjilGenap),
+              const SizedBox(height: 20),
+              Text(
+                _hasil,
+                style: const TextStyle(fontSize: 24),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );

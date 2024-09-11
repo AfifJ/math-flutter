@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:login_and_math/components/custom_button.dart';
+import 'package:login_and_math/components/custom_textfield.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +19,8 @@ class MyApp extends StatelessWidget {
 }
 
 class TambahKurang extends StatefulWidget {
+  const TambahKurang({super.key});
+
   @override
   _TambahKurangState createState() => _TambahKurangState();
 }
@@ -47,55 +53,49 @@ class _TambahKurangState extends State<TambahKurang> {
       appBar: AppBar(
         title: Text('Tambah Kurang'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _numberController1,
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-                  enabledBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                      borderSide: BorderSide(color: Colors.black26)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                      borderSide: BorderSide(color: Colors.black)),
-                  labelText: 'Angka pertama'),
-              keyboardType: TextInputType.number,
-            ),
-            const SizedBox(height: 20,),
-            TextField(
-              controller: _numberController2,
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-                  enabledBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                      borderSide: BorderSide(color: Colors.black26)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                      borderSide: BorderSide(color: Colors.black)),
-                  labelText: 'Angka kedua'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () => _hitung('Penjumlahan'),
-                  child: Text('Penjumlahan'),
-                ),
-                ElevatedButton(
-                  onPressed: () => _hitung('Pengurangan'),
-                  child: Text('Pengurangan'),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Text(_result),
-          ],
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 500),
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SizedBox(height: 32),
+              Image.asset('assets/plus.png'),
+              SizedBox(height: 32),
+              CustomTextField(
+                label: "Angka Pertama",
+                controller: _numberController1,
+                keyboardType: TextInputType.number,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
+                controller: _numberController2,
+                label: "Angka Pertama",
+                keyboardType: TextInputType.number,
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomButton(
+                    isOutlined: true,
+                    onPressed: () => _hitung('Pengurangan'),
+                    text: "Pengurangan",
+                    icon: Icons.remove_circle_outline_rounded,
+                  ),
+                  SizedBox(width: 20),
+                  CustomButton(
+                      text: "Penjumlahan",
+                      icon: Icons.add_circle_outline_rounded,
+                      onPressed: () => _hitung("Penjumlahan"))
+                ],
+              ),
+              SizedBox(height: 20),
+              Text(_result),
+            ],
+          ),
         ),
       ),
     );

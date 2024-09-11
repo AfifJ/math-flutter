@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:login_and_math/components/custom_button.dart';
 import 'package:login_and_math/ganjilgenap_page.dart';
+import 'package:login_and_math/login_page.dart';
 import 'package:login_and_math/tambahkurang.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -9,13 +11,63 @@ class DashboardPage extends StatelessWidget {
     "Habib maulana (124220024)"
   ];
 
+  void _logout(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
+
+  void _confirmLogout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          title: Text("Confirm Logout",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center),
+          content: Text(
+            "Are you sure you want to log out?",
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            Row(
+              children: [
+                CustomButton(
+                  isOutlined: true,
+                  text: "Cancel",
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                ),
+                SizedBox(width: 12),
+                CustomButton(
+                  text: "Logout",
+                  backgroundColor: Colors.red.shade900,
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the dialog
+                    _logout(context); // Proceed with logout
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
             child: Container(
-                margin: EdgeInsets.symmetric(vertical: 40),
-                constraints: BoxConstraints(maxWidth: 300),
+                margin: EdgeInsets.all(40),
+                constraints: BoxConstraints(maxWidth: 500),
                 child: Scaffold(
                   body: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,46 +108,36 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 40),
-
-                        OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 24,
-                                vertical: 18,
-                              ),
-                              foregroundColor: Colors.black,
-                              minimumSize: Size(double.infinity, 0)),
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => TambahKurang()),);
-                          },
-                          child: const Text("Tambah Kurang"),
-                        ),
+                        CustomButton(
+                            isOutlined: true,
+                            text: "Tambah Kurang",
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TambahKurang()),
+                              );
+                            }),
                         SizedBox(height: 12),
-                        OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 24,
-                                vertical: 18,
-                              ),
-                              foregroundColor: Colors.black,
-                              minimumSize: Size(double.infinity, 0)),
+                        CustomButton(
+                          isOutlined: true,
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => GanjilGenap()),);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GanjilGenap()),
+                            );
                           },
-                          child: const Text("Ganjil Genap"),
+                          text: "Ganjil Genap",
                         ),
                         SizedBox(height: 40),
-                        ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red.shade900,
-                              foregroundColor: Colors.white,
-                              minimumSize: Size(double.infinity, 0),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 24, vertical: 18)),
-                          onPressed: () {},
-                          icon: Icon(Icons.logout),
-                          label: Text("Logout"),
-                        ) // child: Text("Logout"))
+                        CustomButton(
+                            text: "Logout",
+                            backgroundColor: Colors.red[900],
+                            icon: Icons.logout,
+                            onPressed: () => _confirmLogout(context)),
+
+                        // child: Text("Logout"))
                       ]),
                 ))));
   }
