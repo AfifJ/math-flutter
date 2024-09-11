@@ -53,13 +53,12 @@ class _TambahKurangState extends State<TambahKurang> {
       appBar: AppBar(
         title: Text('Tambah Kurang'),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Container(
           constraints: BoxConstraints(maxWidth: 500),
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(height: 32),
               Image.asset('assets/plus.png'),
               SizedBox(height: 32),
               CustomTextField(

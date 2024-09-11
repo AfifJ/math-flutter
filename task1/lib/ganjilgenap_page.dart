@@ -37,17 +37,15 @@ class _GanjilGenapState extends State<GanjilGenap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ganjil Genap'),
-      ),
-      body: Center(
-        child: Container(
+        appBar: AppBar(
+          title: const Text('Ganjil Genap'),
+        ),
+        body: Container(
           constraints: BoxConstraints(maxWidth: 500),
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Image.network(
-                  "assets/odd_even.png"),
+              Image.asset('assets/odd_even.png'),
               CustomTextField(
                 label: "Masukkan angka",
                 controller: _controller,
@@ -62,8 +60,6 @@ class _GanjilGenapState extends State<GanjilGenap> {
               ),
             ],
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

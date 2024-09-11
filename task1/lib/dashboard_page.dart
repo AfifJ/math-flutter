@@ -25,13 +25,13 @@ class DashboardPage extends StatelessWidget {
         return AlertDialog(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(12))),
-          title: Text("Confirm Logout",
+          title: Text("Konfirmasi Logout",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center),
           content: Text(
-            "Are you sure you want to log out?",
+            "Apakah anda yakin akan logout? Anda harus login lagi nanti.",
             textAlign: TextAlign.center,
           ),
           actions: [
@@ -39,7 +39,7 @@ class DashboardPage extends StatelessWidget {
               children: [
                 CustomButton(
                   isOutlined: true,
-                  text: "Cancel",
+                  text: "Batal",
                   onPressed: () {
                     Navigator.of(context).pop(); // Close the dialog
                   },
@@ -66,26 +66,31 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
         body: Center(
             child: Container(
-                margin: EdgeInsets.all(40),
+                margin: EdgeInsets.all(16),
                 constraints: BoxConstraints(maxWidth: 500),
                 child: Scaffold(
                   body: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                          height: 60,
+                        ),
                         Center(
                             child: Text("Dashboard",
                                 style: TextStyle(
-                                    fontSize: 24,
+                                    fontSize: 36,
                                     fontWeight: FontWeight.bold))),
                         SizedBox(
-                          height: 40,
+                          height: 60,
                         ),
-                        Text(
-                          "Kelompok:",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              height: 1),
+                        Center(
+                          child: Text(
+                            "Kelompok:",
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                                height: 1),
+                          ),
                         ),
                         ListView.builder(
                           shrinkWrap: true,
@@ -94,17 +99,19 @@ class DashboardPage extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               vertical: 8), // Padding vertikal untuk ListView
                           itemBuilder: (context, index) {
-                            return Text("${index + 1}. ${anggota[index]}");
+                            return Text(anggota[index],
+                                style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.center);
                           },
                         ),
                         SizedBox(
-                          height: 40,
+                          height: 60,
                         ),
                         Center(
                           child: Text(
                             "Pilih Menu",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                         ),
                         SizedBox(height: 40),
@@ -130,7 +137,15 @@ class DashboardPage extends StatelessWidget {
                           },
                           text: "Ganjil Genap",
                         ),
-                        SizedBox(height: 40),
+                        SizedBox(height: 20),
+                        const Row(children: [
+                          Expanded(child: Divider()),
+                          SizedBox(width: 10),
+                          Text("atau"),
+                          SizedBox(width: 10),
+                          Expanded(child: Divider()),
+                        ]),
+                        SizedBox(height: 20),
                         CustomButton(
                             text: "Logout",
                             backgroundColor: Colors.red[900],

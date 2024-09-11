@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:login_and_math/dashboard_page.dart';
-import 'package:login_and_math/ganjilgenap_page.dart';
-import 'package:login_and_math/tambahkurang.dart';
 import 'login_page.dart';
 
 void main() {
@@ -19,12 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Matematika Mobile',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: DashboardPage(),
+      home: LoginPage(),
     );
   }
 }

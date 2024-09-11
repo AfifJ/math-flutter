@@ -53,94 +53,95 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 40),
-          constraints: const BoxConstraints(maxWidth: 500),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 40),
-              Center(
-                child: Image.asset(
-                  'assets/dash-fainting.gif',
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.image);
-                  },
-                ),
+        body: SingleChildScrollView(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+        constraints: const BoxConstraints(maxWidth: 500),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 80),
+            Center(
+              child: Image.asset(
+                'assets/dash-fainting.gif',
+                height: 100,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.image);
+                },
               ),
-              const SizedBox(height: 40),
-              const Center(
-                child: Text(
-                  "Login",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                ),
+            ),
+            const Center(
+              child: Text(
+                "Hai Kawan",
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
-              const Center(
-                child: Text(
-                  "Welcome back to UPN",
-                  style: TextStyle(fontSize: 16, color: Colors.black54),
-                ),
+            ),
+            const Center(
+              child: Text(
+                "Welcome back to UPN",
+                style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
-              const SizedBox(height: 40),
-              Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomTextField(
-                      keyboardType: TextInputType.emailAddress,
-                      onSaved: (e) => _email = e ?? '',
-                      validator: _validateEmail,
-                      label: "Email",
-                      icon: Icons.person_sharp,
-                    ),
-                    const SizedBox(height: 24),
-                    CustomTextField(
-                      onSaved: (e) => _password = e ?? '',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
-                      label: "Password",
-                      obsecure: true,
-                      icon: Icons.lock,
-                    ),
-                    const SizedBox(height: 40),
-                    Row(
-                      children: [
-                        CustomButton(text: "Login", onPressed: _submit),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        const Text("Belum punya akun?"),
-                        const SizedBox(width: 8),
-                        GestureDetector(
-                          onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Harus punya')),
-                            );
-                          },
-                          child: Text(
-                            "Belum punya akun?",
-                            style: TextStyle(
-                              color: Colors.blue,
-                            ),
+            ),
+            const SizedBox(height: 40),
+            Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomTextField(
+                    keyboardType: TextInputType.emailAddress,
+                    onSaved: (e) => _email = e ?? '',
+                    validator: _validateEmail,
+                    label: "Email",
+                    icon: Icons.person_sharp,
+                  ),
+                  const SizedBox(height: 24),
+                  CustomTextField(
+                    onSaved: (e) => _password = e ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your password';
+                      }
+                      return null;
+                    },
+                    label: "Password",
+                    obsecure: true,
+                    icon: Icons.lock,
+                  ),
+                  const SizedBox(height: 40),
+                  Row(
+                    children: [
+                      CustomButton(text: "Login", onPressed: _submit),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      const Text("Belum punya akun?"),
+                      const SizedBox(width: 8),
+                      GestureDetector(
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(
+                                    'email: admin@gmail.com\npassword: admin')),
+                          );
+                        },
+                        child: Text(
+                          "Cari tahu",
+                          style: TextStyle(
+                            color: Colors.blue,
                           ),
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       ),
-    );
+    ));
   }
 }
